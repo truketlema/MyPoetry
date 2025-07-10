@@ -17,7 +17,7 @@ import read from "../assets/read.png";
 import lili2 from "../assets/lili2.png";
 export default function Home() {
   return (
-    <div className="home text-white font-bold overflow-hidden font-cormorant">
+    <div className="home text-white font-bold overflow-hidden  font-cormorant">
       <div className="absolute ">
         <Header className="" />
       </div>
@@ -52,39 +52,39 @@ export default function Home() {
           <img src={butterfly} className="w-[600px]" alt="" />
         </div>
       </div>
-      {/* <div className="items-center justify-center flex flex-col gap-10 py-20">
-        <img src={writer} className=" " alt="" />
-      </div> */}
+
       <div
         className="container2 items-center justify-center px-20  pt-28  flex flex-row  bg-[#c7c7c7] font-playfair 
       "
       >
-        <img src={leaves} className=" w-40" alt="" />
-        <div className="flex flex-col gap-10 px-10">
-          <div className="flex flex-col gap-2 ">
-            <h1 className="text-3xl font-bold">Wander Through My Words</h1>
-            <p className="text-lg">
+        <img src={leaves} className=" w-24 md:w-40 pl-4" alt="" />
+        <div className="flex flex-col gap-10 px-5">
+          <div className="flex flex-col gap-2  text-black ">
+            <h1 className="text-xl md:text-3xl font-bold">
+              Wander Through My Words
+            </h1>
+            <p className="text-sm md:text-lg  lg:text-xl  ">
               Here lies a collection of verses, pieces of my heart etched into
               rhythm and rhyme. Each path below leads you to a world of emotions
               I've wrapped in poetry. Dive in.
             </p>
           </div>
 
-          <div className="flex flex-row  gap-10 text-2xl font-bold text-black font-dancingScript">
+          <div className="flex flex-row  gap-5 md:gap-10 text-lg md:text-2xl font-bold text-black font-dancingScript">
             <div>
-              <Link to="/overview" className="">
+              <Link to="/spritual" className="">
                 Spritual
               </Link>
             </div>
             <div>
               {" "}
-              <Link to="/overview">Romance</Link>
+              <Link to="/romance">Romance</Link>
             </div>
             <div>
               {" "}
-              <Link to="/overview">Feelings</Link>
+              <Link to="/feelings">Feelings</Link>
             </div>
-            <div>
+            <div className="hidden md:block">
               <Link to="/overview">All in one</Link>
             </div>
           </div>
@@ -153,7 +153,7 @@ export default function Home() {
         </div>
       </div>
       <div
-        className="container4 relative min-h-screen  md:grid-cols-[1fr_2fr_1fr] grid xl:grid-cols-[1fr_2fr_2fr_2fr_1fr]  text-gray-900 text-xs overflow-hidden "
+        className="container4 relative min-h-screen  md:grid-cols-[1fr_2fr_1fr] grid  text-gray-900 text-xs overflow-hidden "
         style={{
           backgroundImage: `url('https://www.transparenttextures.com/patterns/billie-holiday.png')`,
           backgroundBlendMode: "overlay",
@@ -192,34 +192,7 @@ export default function Home() {
             Verses born from heartache
           </p>
         </div>
-        <div className="hidden xl:block">
-          <p className="font-serif  blur-xxxs leading-relaxed italic">
-            me.In a quiet place,the birdsong filled the air,while a gentle
-            breeze embranced my face with soothing touch.I was lost in a thought
-            of the day you've rescued me,the day we've met. We loved, we lived,
-            we laughed, and we wept together.Having you by my side was the
-            biggest paradise. You were the lover of my soul,the one who remained
-            beside me through all the situations. You kept me alive, even
-            through the moment of madness.
-          </p>
-          <img src={read} alt="" className="absolute w-64 ml-16" />
-        </div>
-        <div className="hidden xl:block ">
-          <p className="font-serif italic blur-xxs leading-relaxed px-3">
-            You've been a shoulder to cry on,the heaven i seek refuge in,the
-            home i always run to.In a quiet place and serene day,while i was
-            rushing to flee from my heart,I was lost in a thought of the day
-            you've met me. But I'm lost again,blinded to see your presence.Only
-            your love can rescue me now,making me whole again.Remind me of my
-            worth,and awaken the strength within.Am I worth the fight? Will you
-            lift me up again? <br />
-            -Avril
-          </p>
-          <p className="text-4xl absolute pt-2 -rotate-[-12deg] text-red-900">
-            "Poetry is the breath of the soul."
-          </p>
-          <img src={lili2} alt="" className="absolute" />
-        </div>
+
         <div className=" hidden md:block">
           <p className="font-serif  italic blur-xs leading-relaxed">
             "Poetry is the soul whispering... <br /> A broken thought rebuilt in
@@ -258,65 +231,14 @@ export default function Home() {
             because a guiding light appears, but because I'm losing myself to
             you.
           </p>
-          {/* virginia woolf */}
-          <img src={dosto} alt="" className="absolute pt-8 w-[13%] blur-xxxs" />
-          <p className="  text-2xl font-bold font-dancingScript pt-8 pl-40 ">
+
+          <img
+            src={dosto}
+            alt=""
+            className="absolute pt-8 w-[35%] sm:w-[25%] md:w-[17%] lg:w-[15%] blur-xxxs"
+          />
+          <p className="  text-2xl font-bold font-dancingScript pt-16 pl-52 pr-2 md:pl-40 ">
             “To live without hope is to cease to live.” – Dostoevsky
-          </p>
-          {/* <p className="absolute text-9xl">❌</p> */}
-        </div>
-        <div className="hidden xl:block ">
-          <h1 className="blur-xxs leading-relaxed font-bold text-xl text-center pt-4">
-            {" "}
-            I see you{" "}
-          </h1>
-          <p className="font-serif  italic blur-xxxs leading-relaxed pl-4">
-            I see you in every dream of my night,
-            <br />
-            In every rainbow of my ignite. <br />
-            In the beauty of the moon, <br />
-            In a shadowed afternoon. <br />
-            In a thought of not being enough, <br />
-            When the day is eagerly tough. <br /> <br />
-            I see you, like a daily nightmare; <br />
-            Your spirit is everywhere. <br />
-            I drown in a jealous river, <br />
-            Where every piece of you for me is a mirror— <br />
-            A mirror to my conquered soul, <br />
-            To show me the little me is all. <br />
-            The unloved me is more, <br />
-            The ugly me is full and whole. <br />
-            I see you on my saddest day;
-            <br />
-            ...
-          </p>
-          {/* <p className="text-4xl absolute">
-            "The poet’s mission is to bring the heart of the reader to life, to
-            awaken his feelings, to make him aware of the great depths of the
-            soul."
-          </p> */}
-          <p className="text-4xl absolute -rotate-12 text-[#517494]">
-            “Hope is the thing with feathers that perches in the soul.” — Emily
-            Dickinson
-          </p>
-        </div>
-        <div className=" hidden xl:block">
-          <h1 className="blur-xxs leading-relaxed font-bold text-xl text-center pt-4">
-            {" "}
-            unspoken desire
-          </h1>
-          <p className="font-serif  italic blur-xxs leading-relaxed px-3">
-            you were quiet, in the hush of that moment you adored my verses with
-            a whispered praises, each compliment of our shared admiration. your
-            smile bloomed like a delicate flower, remember? the day I've noticed
-            you. your words flowed smoothly, like a calm river, with their
-            peaceful melody. In the quiet of the night, as I lay in my bed and
-            closed my eyes, i remembered the little sparkle and peace I felt for
-            a moment. Days went buy, yet the sparkles remained. your red eyes,
-            flushed with lack of sleep. i was vanished in a thought, as if
-            you've cast a spell over my mind. You admired the moon with a smile,
-            and I couldn't help but feel a bit envious. Your voice echoes in my
-            head, I seek you out in every place i find myself.
           </p>
         </div>
 
@@ -358,28 +280,7 @@ export default function Home() {
             ...
           </p>
         </div>
-        <div className=" hidden xl:block">
-          <p className="font-serif  italic blur-xxxs leading-relaxed pt-8">
-            Far from the land carrying me along,
-            <br />
-            A clouded sky with a bird-filled song, <br />
-            In silent thought and a peaceful heart,
-            <br />
-            Until I see once again through your red eyes. <br />
-            I secretly wished to roam across your mind. <br />
-          </p>
-        </div>
-        <div className="hidden xl:block ">
-          <p className="font-serif  italic blur-xxs leading-relaxed px-3">
-            my heart races whenever you're near, as if I'm loosing control. I
-            wish for your gaze, but not too intense, for fear you might see my
-            mess. <br />
-            <br />
-            Trying to provoke you, Seeking your attention, yet avoiding eye
-            contact. Walking by your side, longing to touch your hands, yet
-            searching for another topic to discuss.
-          </p>
-        </div>
+
         <div className=" hidden md:block">
           <p className="font-serif  italic blur-xs  left-[1110px] w-[180px] leading-relaxed">
             "Lines that never bleed out. "A broken thought rebuilt in rhythm.
