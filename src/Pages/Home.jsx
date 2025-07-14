@@ -61,8 +61,19 @@ export default function Home() {
             delaySpeed={200}
           />
         </h1>
-        <div className="container2 max-md:absolute items-end pl-96  ">
-          <img src={butterfly} className="w-[600px]" alt="" />
+        <div
+          className="
+    container2 
+    max-md:absolute max-md:top-24 max-md:left-8 max-md:pl-6
+    pl-48
+    items-end
+  "
+        >
+          <img
+            src={butterfly}
+            className="w-[600px] max-md:w-[280px]"
+            alt="butterfly"
+          />
         </div>
       </div>
 
