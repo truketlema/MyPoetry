@@ -6,6 +6,8 @@ import SinglePoem from "./Pages/SinglePoem";
 import Feelings from "./Pages/Feelings";
 import Spritual from "./Pages/Spritual";
 import Romance from "./Pages/Romance";
+import Signup from "./Pages/Signup";
+import Login from "./Pages/Login";
 
 function App() {
   return (
@@ -17,6 +19,9 @@ function App() {
         <Route path="/feelings" element={<Feelings />}></Route>
         <Route path="/spritual" element={<Spritual />}></Route>
         <Route path="/romance" element={<Romance />}></Route>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        {/* Add more routes as needed */}
         <Route path="*" element={<h1>Page Not Found</h1>} />
       </Routes>
     </>

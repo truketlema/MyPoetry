@@ -1,4 +1,7 @@
 import { Typewriter } from "react-simple-typewriter";
+import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
+
 import myblueworld from "../assets/myblueworld.png";
 import Header from "../components/header";
 import leaves from "../assets/leaves.svg";
@@ -16,8 +19,18 @@ import blind from "../assets/blind.png";
 import read from "../assets/read.png";
 import lili2 from "../assets/lili2.png";
 export default function Home() {
+  const navigate = useNavigate();
+
+  const handleProtectedRoute = (path) => {
+    if (auth.currentUser) {
+      navigate(path);
+    } else {
+      navigate("/signup");
+    }
+  };
+
   return (
-    <div className="home text-white font-bold overflow-hidden  font-cormorant">
+    <div className="home text-white font-bold overflow-hidden  font-cormorant ">
       <div className="absolute ">
         <Header className="" />
       </div>
@@ -70,22 +83,26 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="flex flex-row  gap-5 md:gap-10 text-lg md:text-2xl font-bold text-black font-dancingScript">
+          <div className="flex flex-row gap-5 md:gap-10 text-lg md:text-2xl font-bold text-black font-dancingScript">
             <div>
-              <Link to="/spritual" className="">
+              <button onClick={() => handleProtectedRoute("/spritual")}>
                 Spritual
-              </Link>
+              </button>
             </div>
             <div>
-              {" "}
-              <Link to="/romance">Romance</Link>
+              <button onClick={() => handleProtectedRoute("/romance")}>
+                Romance
+              </button>
             </div>
             <div>
-              {" "}
-              <Link to="/feelings">Feelings</Link>
+              <button onClick={() => handleProtectedRoute("/feelings")}>
+                Feelings
+              </button>
             </div>
             <div className="hidden md:block">
-              <Link to="/overview">All in one</Link>
+              <button onClick={() => handleProtectedRoute("/overview")}>
+                All in one
+              </button>
             </div>
           </div>
         </div>
@@ -153,7 +170,7 @@ export default function Home() {
         </div>
       </div>
       <div
-        className="container4 relative min-h-screen  md:grid-cols-[1fr_2fr_1fr] grid  text-gray-900 text-xs overflow-hidden "
+        className="container4 relative  min-h-screen  md:grid-cols-[1fr_2fr_1fr] grid  text-gray-900 text-xs overflow-hidden "
         style={{
           backgroundImage: `url('https://www.transparenttextures.com/patterns/billie-holiday.png')`,
           backgroundBlendMode: "overlay",
@@ -164,7 +181,7 @@ export default function Home() {
         <img src={loveis} alt="" className="absolute pt-2" />
 
         <div className=" hidden md:block">
-          <p className="font-serif  italic blur-xs absolute   -left-20 leading-relaxed ">
+          <p className="font-serif  italic blur-xs relative  -left-20 leading-relaxed ">
             "Poetry is the soul whispering... <br /> A broken thought rebuilt in
             rhythm. <br />
             lorem ipsum dolor sit amet consectet <br />
@@ -206,7 +223,7 @@ export default function Home() {
           <img src={blind} alt="" className="absolute pt-4" />
         </div>
         <div className=" hidden md:block">
-          <p className="font-serif italic blur-xs  absolute   -left-20 leading-relaxed">
+          <p className="font-serif italic blur-xs  relative   -left-20 leading-relaxed">
             "A broken thought rebuilt in rhythm. <br /> "A broken thought
             rebuilt in rhythm. <br /> lorem ipsum dolor sit amet consectet{" "}
             <br />
@@ -256,7 +273,7 @@ export default function Home() {
         </div>
 
         <div className="hidden md:block ">
-          <p className="font-serif  italic blur-xs absolute   -left-20 leading-relaxed">
+          <p className="font-serif  italic blur-xs relative   -left-20 leading-relaxed">
             "Poetry is the soul whispering... <br /> A broken thought rebuilt in
             rhythm. <br />
             lorem ipsum dolor sit amet consectet <br />
