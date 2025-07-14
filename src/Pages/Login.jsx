@@ -79,7 +79,7 @@ export default function Login() {
           />
           <button
             type="submit"
-            className="bg-[#517494] text-white px-36 py-2 rounded hover:bg-white hover:text-[#517494] transition-colors"
+            className="bg-[#517494] text-white px-6 py-2 rounded hover:bg-white hover:text-[#517494] transition-colors"
           >
             Log in
           </button>
