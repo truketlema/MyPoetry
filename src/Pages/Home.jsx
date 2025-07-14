@@ -49,7 +49,7 @@ export default function Home() {
           alt="My Blue World"
           className="absolute inset-0 w-full h-full object-contain pointer-events-none z-0 top-24 "
         />
-        <h1 className="absolute z-10 top-80 pt-5 font-dancingScript">
+        <h1 className="absolute z-10 top-80 md:pt-5 pt-10 font-dancingScript">
           <Typewriter
             words={["Here my world starts."]}
             loop={1}
