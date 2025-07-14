@@ -123,7 +123,7 @@ export default function SinglePoem() {
 
   return (
     <div
-      className="h-screen bg-gradient-to-t from-white to-[#517494]  font-playfair text-center"
+      className="h-screen bg-gradient-to-t from-white to-[#517494] font-playfair text-center"
       style={{
         backgroundImage: `
           url('https://www.transparenttextures.com/patterns/binding-dark.png'),
@@ -137,9 +137,9 @@ export default function SinglePoem() {
         className="h-screen max-w-3xl px-6 mx-auto"
         style={{
           backgroundImage: `
-          url('https://www.transparenttextures.com/patterns/binding-dark.png'),
-          linear-gradient(to top, white, #517494)
-        `,
+            url('https://www.transparenttextures.com/patterns/binding-dark.png'),
+            linear-gradient(to top, white, #517494)
+          `,
           backgroundBlendMode: "overlay",
           backgroundSize: "auto, cover",
         }}
@@ -159,8 +159,17 @@ export default function SinglePoem() {
           >
             💙 {likes.length}
           </button>
+
           <button
-            onClick={() => setShowComments((prev) => !prev)}
+            onClick={() => {
+              if (!user) {
+                navigate("/signup", {
+                  state: { from: location.pathname },
+                });
+                return;
+              }
+              setShowComments((prev) => !prev);
+            }}
             className="px-4 py-2 rounded bg-gray-300 text-black flex items-center"
           >
             <svg
@@ -194,7 +203,7 @@ export default function SinglePoem() {
         </div>
 
         {showComments && (
-          <div className="mt-10 text-left ">
+          <div className="mt-10 text-left">
             <h2 className="text-2xl font-semibold mb-4">Comments</h2>
 
             {comments.filter((c) => c && c.text && c.author && c.createdAt)
