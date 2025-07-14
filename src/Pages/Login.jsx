@@ -1,17 +1,24 @@
 import { auth, googleProvider } from "../firebase";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Where to redirect after login, default to "/"
+  const from = location.state?.from || "/";
+
   const handleGoogleLogin = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
       alert("Logged in with Google!");
+      navigate(from, { replace: true }); // Redirect after login
     } catch (error) {
       console.error(error);
       alert(error.message);
@@ -25,6 +32,7 @@ export default function Login() {
       alert("Logged in!");
       setEmail("");
       setPassword("");
+      navigate(from, { replace: true }); // Redirect after login
     } catch (error) {
       console.error(error);
       alert(error.message);

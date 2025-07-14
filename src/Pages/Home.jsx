@@ -18,26 +18,23 @@ import dosto from "../assets/dosto.png";
 import blind from "../assets/blind.png";
 import read from "../assets/read.png";
 import lili2 from "../assets/lili2.png";
+
 export default function Home() {
   const navigate = useNavigate();
 
+  // ✅ simplified - removed redirect to signup
   const handleProtectedRoute = (path) => {
-    if (auth.currentUser) {
-      navigate(path);
-    } else {
-      navigate("/signup");
-    }
+    navigate(path);
   };
 
   return (
-    <div className="home text-white font-bold overflow-hidden  font-cormorant ">
+    <div className="home text-white font-bold overflow-hidden font-cormorant">
       <div className="absolute ">
         <Header className="" />
       </div>
 
       <div
-        className=" container1 h-screen flex items-center justify-center text-4xl bg-gradient-to-r from-black to-[#517494] overflow-hidden shadow-2xl
-       "
+        className=" container1 h-screen flex items-center justify-center text-4xl bg-gradient-to-r from-black to-[#517494] overflow-hidden shadow-2xl"
         style={{
           backgroundImage: `
           url('https://www.transparenttextures.com/patterns/binding-dark.png'),
@@ -77,17 +74,14 @@ export default function Home() {
         </div>
       </div>
 
-      <div
-        className="container2 items-center justify-center px-20  pt-28  flex flex-row  bg-[#c7c7c7] font-playfair 
-      "
-      >
+      <div className="container2 items-center justify-center px-20  pt-28  flex flex-row  bg-[#c7c7c7] font-playfair">
         <img src={leaves} className=" w-24 md:w-40 pl-4" alt="" />
         <div className="flex flex-col gap-10 px-5">
           <div className="flex flex-col gap-2  text-black ">
             <h1 className="text-xl md:text-3xl font-bold">
               Wander Through My Words
             </h1>
-            <p className="text-sm md:text-lg  lg:text-xl  ">
+            <p className="text-sm md:text-lg  lg:text-xl">
               Here lies a collection of verses, pieces of my heart etched into
               rhythm and rhyme. Each path below leads you to a world of emotions
               I've wrapped in poetry. Dive in.
@@ -118,22 +112,21 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className=" container2 items-center justify-center flex flex-col gap-10   bg-[#c7c7c7]">
+
+      <div className="container2 items-center justify-center flex flex-col gap-10   bg-[#c7c7c7]">
         <img src={writer} className=" " alt="" />
       </div>
+
       <div className="min-h-screen container3 overflow-hidden flex flex-col gap-10">
         <div className=" text-black flex flex-col md:flex-row">
-          <div className="md:w-1/2    items-center  flex flex-col gap-5  font-playfair ">
-            {" "}
+          <div className="md:w-1/2 items-center flex flex-col gap-5 font-playfair">
             <div>
               <h1 className="text-3xl font-bold text-center pt-10 font-playfair">
                 The Fractured Beauty of Writing
               </h1>
             </div>
-            <div className=" items-center justify-center flex flex-col gap-5 font-playfair ">
-              {" "}
+            <div className="items-center justify-center flex flex-col gap-5 font-playfair">
               <h1 className="items-center justify-center flex flex-col gap-10 font-playfair">
-                {" "}
                 Poetry is a rib
               </h1>
               <p className="items-center justify-center flex flex-col gap-10 font-playfair">
@@ -141,19 +134,17 @@ export default function Home() {
                 the bone that cradles the soul’s unrest. <br /> Dostoevsky
                 carved his ache into it, <br />
                 each word a fracture of truth, <br /> each line a cage for the
-                screaming heart.{" "}
+                screaming heart.
               </p>
               <p className="items-center justify-center flex flex-col gap-10 font-playfair">
-                {" "}
                 In the quiet of ink and paper, <br /> we find our own ribs,{" "}
                 <br />
                 the hidden chambers of our being, <br /> where the poetry of
                 life breathes. <br /> It is a rib, a silent witness to our
-                existence.
-                <br /> It is a rib, a testament to our fragility. <br /> It is a
-                rib,
+                existence. <br /> It is a rib, a testament to our fragility.{" "}
+                <br /> It is a rib,
               </p>
-              <p className=" absolute text-lg px-10 pt-96 mt-14 font-dancingScript  ">
+              <p className="absolute text-lg px-10 pt-96 mt-14 font-dancingScript">
                 “Poetry is, after all, only nonsense and justifies what would be
                 considered impudence if written in prose.” — Fyodor Dostoevsky,
                 Demons
@@ -161,7 +152,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2  items-center justify-center px-10 py-10 font-playfair md:w-1/2  ">
+          <div className="grid grid-cols-2  items-center justify-center px-10 py-10 font-playfair md:w-1/2">
             <p className="absolute text-lg font-dancingScript  -rotate-[-60deg]">
               “As for me, this is my story: I worked and was tortured. You know
               what it means to compose? No, thank God, you do not! I believe you
@@ -172,26 +163,25 @@ export default function Home() {
 
             <img src={rib} alt="" />
             <img src={write} alt="" className="" />
-            <div className="flex items-center justify-center flex-col font-cormorant ">
-              {" "}
+            <div className="flex items-center justify-center flex-col font-cormorant">
               <img src={virginiawolf} alt="" />
               <p className="">virginia woolf</p>
             </div>
           </div>
         </div>
       </div>
+
       <div
         className="container4 relative  min-h-screen  md:grid-cols-[1fr_2fr_1fr] grid  text-gray-900 text-xs overflow-hidden "
         style={{
           backgroundImage: `url('https://www.transparenttextures.com/patterns/billie-holiday.png')`,
           backgroundBlendMode: "overlay",
-
           backgroundSize: "auto, cover",
         }}
       >
         <img src={loveis} alt="" className="absolute pt-2" />
 
-        <div className=" hidden md:block">
+        <div className="hidden md:block">
           <p className="font-serif  italic blur-xs relative  -left-20 leading-relaxed ">
             "Poetry is the soul whispering... <br /> A broken thought rebuilt in
             rhythm. <br />
@@ -204,8 +194,7 @@ export default function Home() {
 
         <div className=" ">
           <h1 className="blur-xxs leading-relaxed font-bold text-xl text-center">
-            {" "}
-            For your return{" "}
+            For your return
           </h1>
           <p className="font-serif italic blur-xxs leading-relaxed px-3">
             The space was quiet,but my mind was too loud,thoughts echoed
@@ -221,7 +210,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className=" hidden md:block">
+        <div className="hidden md:block">
           <p className="font-serif  italic blur-xs leading-relaxed">
             "Poetry is the soul whispering... <br /> A broken thought rebuilt in
             rhythm. <br />
@@ -233,7 +222,7 @@ export default function Home() {
           <img src={blind} alt="" className="absolute " />
           <img src={blind} alt="" className="absolute pt-4" />
         </div>
-        <div className=" hidden md:block">
+        <div className="hidden md:block">
           <p className="font-serif italic blur-xs  relative   -left-20 leading-relaxed">
             "A broken thought rebuilt in rhythm. <br /> "A broken thought
             rebuilt in rhythm. <br /> lorem ipsum dolor sit amet consectet{" "}
@@ -250,7 +239,6 @@ export default function Home() {
 
         <div className=" ">
           <h1 className="blur-xxs leading-relaxed font-bold text-xl text-center pt-4">
-            {" "}
             Escaping Echoes
           </h1>
           <p className="font-serif  italic blur-xxs leading-relaxed px-3">

@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
   doc,
@@ -8,14 +8,14 @@ import {
   arrayRemove,
 } from "firebase/firestore";
 import { db } from "../firebase";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default function SinglePoem() {
   const { id } = useParams();
   const [poem, setPoem] = useState(null);
 
   const auth = getAuth();
-  const user = auth.currentUser;
+  const [user, setUser] = useState(null);
 
   const [likes, setLikes] = useState([]);
   const [hasLiked, setHasLiked] = useState(false);
@@ -23,6 +23,16 @@ export default function SinglePoem() {
   const [commentText, setCommentText] = useState("");
   const [comments, setComments] = useState([]);
   const [showComments, setShowComments] = useState(false);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      setUser(firebaseUser);
+    });
+    return () => unsubscribe();
+  }, [auth]);
 
   useEffect(() => {
     const fetchPoem = async () => {
@@ -46,12 +56,15 @@ export default function SinglePoem() {
         console.error("Error fetching poem:", error);
       }
     };
-    fetchPoem();
+
+    if (id) {
+      fetchPoem();
+    }
   }, [id, user]);
 
   const handleLike = async () => {
     if (!user) {
-      alert("Please log in to like this poem.");
+      navigate("/login", { state: { from: location.pathname } });
       return;
     }
 
@@ -78,7 +91,7 @@ export default function SinglePoem() {
 
   const handleAddComment = async () => {
     if (!user) {
-      alert("Please log in to comment.");
+      navigate("/login", { state: { from: location.pathname } });
       return;
     }
 
@@ -136,7 +149,8 @@ export default function SinglePoem() {
           {poem.content || "No content found"}
         </p>
 
-        <div className="mt-8 flex justify-start space-x-4">
+        {/* Buttons container with padding-bottom for spacing */}
+        <div className="mt-8 flex justify-start space-x-4 mb-4 pb-12">
           <button
             onClick={handleLike}
             className={`px-4 py-2 rounded ${
@@ -165,11 +179,22 @@ export default function SinglePoem() {
             </svg>
             Comment
           </button>
+
+          {user && (
+            <button
+              onClick={async () => {
+                await auth.signOut();
+                navigate("/");
+              }}
+              className="px-4 py-2 rounded bg-gray-300 text-black"
+            >
+              Logout
+            </button>
+          )}
         </div>
 
-        {/* Comments Section */}
         {showComments && (
-          <div className="mt-10 text-left">
+          <div className="mt-10 text-left ">
             <h2 className="text-2xl font-semibold mb-4">Comments</h2>
 
             {comments.filter((c) => c && c.text && c.author && c.createdAt)

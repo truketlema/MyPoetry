@@ -2,14 +2,17 @@ import { Typewriter } from "react-simple-typewriter";
 import { useState, useEffect } from "react";
 import { ImPushpin } from "react-icons/im";
 import Header from "../components/header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import spr from "../assets/spr.jpg"; // fallback image
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { db } from "../firebase";
-import romance1 from "../assets/romance1.jpg"; // fallback image
+import { db, auth } from "../firebase";
+import { signOut } from "firebase/auth";
 
-export default function Romance() {
+export default function Spiritual() {
   const [showAll, setShowAll] = useState(false);
   const [poems, setPoems] = useState([]);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   const pushPinColors = [
     "text-red-500",
@@ -24,20 +27,35 @@ export default function Romance() {
     const fetchPoems = async () => {
       const q = query(
         collection(db, "Writings"),
-        where("category", "==", "Romance")
+        where("category", "==", "Spritual")
       );
       const snapshot = await getDocs(q);
       const data = snapshot.docs.map((doc) => ({
         id: doc.id,
         title: doc.data().title || "Untitled",
         content: doc.data().content || "No content found",
-        image: doc.data().image || romance1,
+        image: doc.data().image || spr,
       }));
       setPoems(data);
     };
-
     fetchPoems();
+
+    // Watch for auth state changes
+    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
+      setUser(currentUser);
+    });
+
+    return () => unsubscribe();
   }, []);
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate("/"); // redirect to home after logout
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  };
 
   const visiblePoems = showAll ? poems : poems.slice(0, 12);
 
@@ -60,10 +78,8 @@ export default function Romance() {
               delaySpeed={200}
             />
           </div>
-        </div>
-        <div className="text-lg gap-10 pt-10 font-bold text-black sm:px-5">
-          <div className="Romance mt-10">
-            <h1 className="text-2xl pb-5 font-dancingScript">Romance</h1>
+          <div className="poetry-categories text-lg gap-10 pt-10 font-bold text-black sm:px-5">
+            <h1 className="text-2xl pb-5 font-dancingScript">Spiritual</h1>
             <div className="columns-2 md:columns-3 lg:columns-4">
               {visiblePoems.map((poem, index) => (
                 <div
@@ -76,11 +92,11 @@ export default function Romance() {
                     className="object-contain rounded max-w-full"
                   />
                   <p className="absolute inset-0 flex items-center justify-center text-white text-sm bg-black bg-opacity-40 p-4 rounded text-center">
-                    {poem.title}
+                    {poem.title || "Untitled"} <br />
                     <br />
-                    <br />
-                    {poem.content.slice(0, 100)}...
+                    {poem.content?.slice(0, 100) || "No preview available"}
                   </p>
+
                   <ImPushpin
                     className={`absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 rotate-[-15deg] shadow-lg text-[#517494] ${
                       pushPinColors[index % pushPinColors.length]
@@ -94,13 +110,21 @@ export default function Romance() {
                 </div>
               ))}
             </div>
-            <div className="pt-5">
+            <div className="pt-5 flex justify-center gap-4">
               <button
                 className="bg-[#517494] text-white px-8 py-2 rounded hover:bg-[#415b71] transition duration-300"
                 onClick={() => setShowAll(!showAll)}
               >
                 {showAll ? "View Less" : "Show All"}
               </button>
+              {user && (
+                <button
+                  onClick={handleLogout}
+                  className="text-white bg-red-600 hover:bg-red-700 px-6 py-2 rounded transition duration-300 font-dancingScript"
+                >
+                  Log out
+                </button>
+              )}
             </div>
           </div>
         </div>

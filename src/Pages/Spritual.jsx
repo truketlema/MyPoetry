@@ -59,7 +59,7 @@ export default function Spiritual() {
               delaySpeed={200}
             />
           </div>
-          <div className="poetry-categories text-lg gap-10 pt-10 font-bold text-black sm:px-5">
+          <div className="poetry-categories text-lg gap-10 pt-10 font-bold text-black px-5">
             <h1 className="text-2xl pb-5 font-dancingScript">Spiritual</h1>
             <div className="columns-2 md:columns-3 lg:columns-4">
               {visiblePoems.map((poem, index) => (

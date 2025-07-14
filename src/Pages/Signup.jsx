@@ -1,17 +1,24 @@
 import { auth, googleProvider } from "../firebase";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Where to redirect after signup, default "/"
+  const from = location.state?.from || "/";
+
   const handleGoogleSignUp = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
       alert("Signed up with Google!");
+      navigate(from, { replace: true }); // Redirect after signup
     } catch (error) {
       console.error(error);
       alert(error.message);
@@ -25,6 +32,7 @@ export default function Signup() {
       alert("Account created!");
       setEmail("");
       setPassword("");
+      navigate(from, { replace: true }); // Redirect after signup
     } catch (error) {
       console.error(error);
       alert(error.message);
@@ -44,8 +52,7 @@ export default function Signup() {
       }}
     >
       <div className="max-w-md mx-auto bg-white p-6 rounded shadow ">
-        {" "}
-        <h1 className="text-3xl font-bold font-mono mb-4">sign up</h1>
+        <h1 className="text-3xl font-bold font-mono mb-4">Sign up</h1>
         <p className="text-center text-sm mb-6">
           Already have an account?{" "}
           <Link
