@@ -73,7 +73,7 @@ export default function Feelings() {
             />
           </div>
 
-          <div className="poetry-categories text-lg gap-10 pt-10 font-bold text-black sm:px-5">
+          <div className="poetry-categories text-lg gap-10 pt-10 font-bold text-black px-5">
             <div className="Feelings mt-10">
               <h1 className="text-2xl pb-5 font-dancingScript">Feelings</h1>
 
