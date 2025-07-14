@@ -123,7 +123,7 @@ export default function SinglePoem() {
 
   return (
     <div
-      className="h-screen bg-gradient-to-t from-white to-[#517494] px-10 font-playfair text-center"
+      className="h-screen bg-gradient-to-t from-white to-[#517494]  font-playfair text-center"
       style={{
         backgroundImage: `
           url('https://www.transparenttextures.com/patterns/binding-dark.png'),
@@ -134,7 +134,7 @@ export default function SinglePoem() {
       }}
     >
       <div
-        className="h-screen max-w-3xl p-8 mx-auto"
+        className="h-screen max-w-3xl px-6 mx-auto"
         style={{
           backgroundImage: `
           url('https://www.transparenttextures.com/patterns/binding-dark.png'),
